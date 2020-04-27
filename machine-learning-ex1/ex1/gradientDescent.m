@@ -17,11 +17,10 @@ for iter = 1:num_iters
     %       of the cost function (computeCost) and gradient here.
     %
 
-
-
-
-
-
+    hx = X * theta;
+    predictionError = hx - y;
+    summation = sum([predictionError predictionError] .* X);
+    theta = theta - ((alpha / m) .* summation');
 
     % ============================================================
 
