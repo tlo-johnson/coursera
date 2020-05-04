@@ -19,7 +19,14 @@ grad = zeros(size(theta));
 %
 % Note: grad should have the same dimensions as theta
 %
+hypothesis = sigmoid(X * theta);
+complexity = (-y .* log(hypothesis)) - ((1 - y) .* log(1 - hypothesis));
+J = (1 / m) * sum(complexity);
 
+for i = 1 : size(X, 2)
+	complexity = (hypothesis - y) .* X(:, i);
+	grad(i, 1) = (1 / m) * sum(complexity);
+end
 
 
 
