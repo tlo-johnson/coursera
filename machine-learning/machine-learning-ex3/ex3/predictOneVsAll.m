@@ -30,12 +30,8 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
-
-
-
-
-
-
+classifications = X * all_theta';
+[i, p] = max(classifications, [ ], 2);
 % =========================================================================
 
 

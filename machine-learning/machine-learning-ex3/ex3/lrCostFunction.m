@@ -36,17 +36,15 @@ grad = zeros(size(theta));
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
 
-
-
-
-
-
-
-
-
-
+predictions = sigmoid(X * theta);
+complexity = (-y .* log(predictions)) - (1 - y) .* log(1 - predictions);
+J = (1 / m) * sum(complexity) + (lambda / (2 * m)) * sum(theta(2:end) .^ 2);
 % =============================================================
 
+non_regularized_grad = (1 / m) * X' * (predictions - y);
+temp = theta;
+temp(1) = 0;
+grad = non_regularized_grad + ((lambda / m) .* temp);
 grad = grad(:);
 
 end
